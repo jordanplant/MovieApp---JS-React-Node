@@ -17,10 +17,27 @@
   }
 
   .MovieOverview {
-    width: 90%; /* Reduce width for smaller screens */
+    width: 90%;
     height: 150px;
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Ensure only vertical scrollbar is displayed */
+    scrollbar-width: thin; /* Set the scrollbar width to 'thin' */
+    scrollbar-color: #ffffff4d #f5f5f500; /* Define the scrollbar color */
+  }
+
+  /* Define the scrollbar track and thumb styles */
+  .MovieOverview::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+
+  .MovieOverview::-webkit-scrollbar-thumb {
+    background-color: #ffffff4d; /* Set the thumb color */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+  }
+
+  .MovieOverview::-webkit-scrollbar-track {
+    background-color: #f5f5f500; /* Set the track color */
+    border-radius: 10px; /* Add border-radius for rounded corners */
   }
 }
 
