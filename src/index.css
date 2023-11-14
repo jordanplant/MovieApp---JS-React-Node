@@ -1,0 +1,21 @@
+:root {
+  font-family: "roboto", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+
+  margin: 0px;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: rgb(36, 36, 36);
+  background: linear-gradient(135deg, #242424, #290859);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* overflow: hidden; */
+}

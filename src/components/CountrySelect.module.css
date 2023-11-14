@@ -1,0 +1,26 @@
+.CountriesList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+select {
+  height: 2em;
+  font-size: 1em;
+  color: unset;
+  text-align: center;
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  border-radius: 5px;
+}
+select::after {
+  content: "<>";
+}
+
+select:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+  transition: 0.2s ease-in-out;
+}

@@ -1,0 +1,63 @@
+/* Default styles for mobile (small screens) */
+.movieImage {
+  width: 150px; /* Adjust image size for small screens */
+  height: 225px;
+  cursor: pointer;
+}
+
+.movieContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
+  gap: 10px;
+}
+
+.movieTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px; /* Adjust width for small screens */
+  height: 50px; /* Adjust height for small screens */
+  background-color: #000;
+  margin: 0 auto;
+  margin-top: -7px;
+  overflow: hidden;
+}
+
+.movieTitle {
+  /* display: block; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 15ch;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.movieTitle:hover {
+  overflow: unset;
+  max-width: none;
+  animation: scrollText 5s linear infinite;
+}
+
+/* Media query for screens with a minimum width of 768px (adjust as needed) */
+@media (min-width: 710px) {
+  /* Styles for larger screens */
+  .movieImage {
+    width: 200px; /* Adjust image size for larger screens */
+    height: 300px;
+  }
+
+  .movieContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+  }
+
+  .movieTitleContainer {
+    width: 200px; /* Adjust width for larger screens */
+    height: 50px; /* Adjust height for larger screens */
+  }
+
+  .movieTitle {
+    max-width: 30ch; /* Adjust max-width for larger screens */
+  }
+}
