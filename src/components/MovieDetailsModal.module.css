@@ -18,9 +18,8 @@
 
   .MovieOverview {
     width: 90%; /* Reduce width for smaller screens */
-    height: 300px;
+    height: 200px;
     overflow: scroll;
-    border-radius: 10px 0px; /* Add a border-radius to round the edges */
   }
 }
 
