@@ -18,8 +18,9 @@
 
   .MovieOverview {
     width: 90%; /* Reduce width for smaller screens */
-    height: 200px;
-    overflow: scroll;
+    height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
