@@ -1,3 +1,26 @@
+@media (max-width: 768px) {
+  .modal {
+    align-items: flex-start; /* Adjust alignment for smaller screens */
+  }
+
+  .modalContent {
+    width: 90%; /* Reduce width for smaller screens */
+  }
+
+  .modalContent h2 {
+    font-size: 30px; /* Decrease font size for smaller screens */
+    padding: 0px; /* Adjust padding for smaller screens */
+  }
+
+  .modalContent p {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .MovieOverview {
+    width: 90%; /* Reduce width for smaller screens */
+  }
+}
+
 .modal {
   display: flex;
   justify-content: center;
@@ -58,8 +81,8 @@ button:active {
   justify-content: end;
 }
 .CloseButton {
-  margin: 10px;
-  padding: 10px;
+  margin: 10px 10px 0px 10px;
+  padding: 10px 10px 0px 10px;
 }
 
 .CloseButton:hover {
@@ -86,11 +109,15 @@ button:active {
 
 .MovieButtonContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
   padding: 10px;
+}
+.MovieButtonContainer p {
+  font-size: 10px;
+  padding: 0px;
+  transform: translateY(-15px);
 }
 
 .MovieButtons {
@@ -103,6 +130,12 @@ button:active {
   margin: 10px;
   border: solid 1px white;
   border-radius: 10px;
+}
+
+.TrailerAvailable,
+.TrailerAvailable p {
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .MovieButtons:active {

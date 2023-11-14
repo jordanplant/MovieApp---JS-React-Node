@@ -1,7 +1,8 @@
 /* Default styles for mobile (small screens) */
+
 .movieImage {
-  width: 150px; /* Adjust image size for small screens */
-  height: 225px;
+  width: 186px;
+  /* height: 280px; */
   cursor: pointer;
 }
 
@@ -15,8 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px; /* Adjust width for small screens */
-  height: 50px; /* Adjust height for small screens */
+  width: 186px;
+  height: 60px; /* Adjust height for small screens */
   background-color: #000;
   margin: 0 auto;
   margin-top: -7px;
@@ -25,19 +26,40 @@
 
 .movieTitle {
   /* display: block; */
-  white-space: nowrap;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 15ch;
+  max-width: 30ch;
   text-align: center;
   margin: 0 auto;
   padding: 5px;
 }
 
-.movieTitle:hover {
-  overflow: unset;
-  max-width: none;
-  animation: scrollText 5s linear infinite;
+.movieTitle.truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  max-width: 40ch;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px;
+  cursor: pointer;
+  /* text-align: left; */
+  /* font-size: 20px; */
+}
+
+.movieDetailsModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Add a semi-transparent background */
+  z-index: 9999; /* Set a high z-index value to make it appear on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Add any other styles you need for the modal */
 }
 
 /* Media query for screens with a minimum width of 768px (adjust as needed) */
@@ -49,7 +71,7 @@
   }
 
   .movieContainer {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    grid-template-columns: repeat(4, 1fr); /* 3 columns for larger screens */
   }
 
   .movieTitleContainer {
@@ -59,5 +81,72 @@
 
   .movieTitle {
     max-width: 30ch; /* Adjust max-width for larger screens */
+  }
+
+  .truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40ch; /* or the desired width */
+    text-align: left;
+  }
+
+  .movieTitle.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 40ch;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .truncated:hover {
+    overflow: unset;
+    text-overflow: none;
+    max-width: none;
+    animation: scrollText 5s linear infinite;
+    text-align: left;
+  }
+
+  /* Define the scrolling animation */
+  @keyframes scrollText {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Apply the animation on hover */
+  .truncated:hover {
+    animation: scrollText 5s linear infinite;
+  }
+}
+@media (min-width: 1280px) {
+  /* Styles for larger screens */
+  .movieImage {
+    width: 200px; /* Adjust image size for larger screens */
+    height: 300px;
+  }
+
+  .movieContainer {
+    grid-template-columns: repeat(5, 1fr); /* 3 columns for larger screens */
+  }
+
+  .movieTitleContainer {
+    width: 200px; /* Adjust width for larger screens */
+    height: 50px; /* Adjust height for larger screens */
+  }
+
+  .movieTitle {
+    /* display: block; */
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
   }
 }

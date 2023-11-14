@@ -14,6 +14,7 @@ function MovieDetailsModal({ movie, onClose, region }) {
   const [certification, setCertification] = useState("Not Rated");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [trailerAvailable, setTrailerAvailable] = useState(true); // Track if a trailer is available
 
   const API_KEY = "c9aafa75d4bd6f4117f32f28fe0e5c8f";
   const BASE_URL = "https://api.themoviedb.org/3";
@@ -34,13 +35,11 @@ function MovieDetailsModal({ movie, onClose, region }) {
         );
 
         const releaseInfo = response.data.results.find(
-          (r) => r.iso_3166_1 === region // Use the region prop here
+          (r) => r.iso_3166_1 === region
         );
         const certificationData =
           releaseInfo?.release_dates.find((d) => d.certification)
             ?.certification || "Not Rated";
-
-        console.log("Certification Data:", certificationData);
 
         setCertification(certificationData);
       } catch (error) {
@@ -51,19 +50,66 @@ function MovieDetailsModal({ movie, onClose, region }) {
       }
     };
 
-    console.log("Movie:", movie);
-    console.log("Region:", region);
-    console.log("API_KEY:", API_KEY);
-    console.log("BASE_URL:", BASE_URL);
-    console.log("Region Prop:", region);
-
     fetchCertification();
-  }, [movie, region]); // Add region to the dependency array
+  }, [movie, region]);
 
   const formattedReleaseDate = formatDate(movie.release_date);
   const languageCode = movie.original_language;
   const languageObject = languageNameMap[languageCode];
   const fullLanguageName = languageObject ? languageObject.name : languageCode;
+
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [onClose]);
+
+  const fetchTrailers = async () => {
+    try {
+      // setLoading(true);
+      setError("");
+
+      const response = await axios.get(`${BASE_URL}/movie/${movie.id}/videos`, {
+        params: { api_key: API_KEY },
+      });
+
+      const videoResults = response.data.results;
+
+      if (videoResults.length > 0) {
+        const trailerList = videoResults.filter(
+          (video) => video.type === "Trailer" || video.type === "Teaser"
+        );
+
+        if (trailerList.length > 0) {
+          // If trailers are available, open the first one
+          const firstTrailer = trailerList[0];
+          window.open(
+            `https://www.youtube.com/watch?v=${firstTrailer.key}`,
+            "_blank"
+          );
+        } else {
+          // No trailers available
+          setTrailerAvailable(false);
+        }
+      } else {
+        // No trailers available
+        setTrailerAvailable(false);
+      }
+    } catch (error) {
+      setError("Failed to fetch trailers");
+      console.error("Error fetching trailers:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={Styles.modal}>
@@ -103,8 +149,14 @@ function MovieDetailsModal({ movie, onClose, region }) {
               </tbody>
             </table>
             <div className={Styles.MovieButtonContainer}>
-              <button className={Styles.MovieButtons}>Show Times</button>
-              <button className={Styles.MovieButtons}>Trailer</button>
+              <button className={Styles.MovieButtons} onClick={fetchTrailers}>
+                Trailer
+              </button>
+              <p>*opens in external link*</p>
+              {/* <button className={Styles.MovieButtons}>Show Times</button> */}
+            </div>
+            <div className={Styles.TrailerAvailable}>
+              {!trailerAvailable && <p>No trailer available</p>}
             </div>
           </div>
         )}

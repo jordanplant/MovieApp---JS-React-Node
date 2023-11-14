@@ -72,18 +72,20 @@ function Movie({ apiUrl, region }) {
         </div>
       ))}
       {selectedMovie && (
-        <MovieDetailsModal
-          movie={selectedMovie}
-          onClose={handleCloseModal}
-          region={region} // Pass 'region' to MovieDetailsModal
-        >
-          {/* Use the close icon */}
-          <FontAwesomeIcon
-            icon={faTimes}
-            size="2x"
-            onClick={handleCloseModal}
-          />
-        </MovieDetailsModal>
+        <div className={Styles.movieDetailsModal}>
+          <MovieDetailsModal
+            movie={selectedMovie}
+            onClose={handleCloseModal}
+            region={region} // Pass 'region' to MovieDetailsModal
+          >
+            {/* Use the close icon */}
+            <FontAwesomeIcon
+              icon={faTimes}
+              size="2x"
+              onClick={handleCloseModal}
+            />
+          </MovieDetailsModal>
+        </div>
       )}
     </div>
   );
