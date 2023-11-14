@@ -58,6 +58,6 @@
   }
 
   .movieTitle {
-    max-width: 30ch; /* Adjust max-width for larger screens */
+    max-width: 40ch; /* Adjust max-width for larger screens */
   }
 }
