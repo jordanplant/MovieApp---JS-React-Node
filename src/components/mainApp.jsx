@@ -44,7 +44,6 @@ const MainApp = () => {
       />
       <h2>Now Playing in {selectedCountry}</h2>
       <Movie apiUrl={apiUrl} region={region} />
-      {/* Additional components and logic as needed */}
     </>
   );
 };
