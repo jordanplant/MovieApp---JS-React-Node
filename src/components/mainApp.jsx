@@ -8,6 +8,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import Footer from "./Footer";
 
 const API_KEY = "c9aafa75d4bd6f4117f32f28fe0e5c8f";
 
@@ -44,6 +45,7 @@ const MainApp = () => {
       />
       <h2>Now Playing in {selectedCountry}</h2>
       <Movie apiUrl={apiUrl} region={region} />
+      <Footer />
     </>
   );
 };
