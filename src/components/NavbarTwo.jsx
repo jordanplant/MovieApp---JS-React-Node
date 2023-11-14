@@ -12,7 +12,7 @@ import CountrySelect from "./CountrySelect";
 import AdbIcon from "@mui/icons-material/Adb";
 import { MenuItem } from "@mui/material";
 
-const pages = ["Home", "About", "Contact", "Certifications"];
+const pages = [];
 
 function ResponsiveAppBar({ region, handleRegionChange }) {
   console.log("ResponsiveAppBar - Received region:", region);
