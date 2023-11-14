@@ -89,12 +89,9 @@ function MovieDetailsModal({ movie, onClose, region }) {
         );
 
         if (trailerList.length > 0) {
-          // If trailers are available, open the first one
+          // If trailers are available, navigate to the first one
           const firstTrailer = trailerList[0];
-          window.open(
-            `https://www.youtube.com/watch?v=${firstTrailer.key}`,
-            "_blank"
-          );
+          window.location.href = `https://www.youtube.com/watch?v=${firstTrailer.key}`;
         } else {
           // No trailers available
           setTrailerAvailable(false);
@@ -152,7 +149,6 @@ function MovieDetailsModal({ movie, onClose, region }) {
               <button className={Styles.MovieButtons} onClick={fetchTrailers}>
                 Trailer
               </button>
-              <p>*opens in external link*</p>
               {/* <button className={Styles.MovieButtons}>Show Times</button> */}
             </div>
             <div className={Styles.TrailerAvailable}>
