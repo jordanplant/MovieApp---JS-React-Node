@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
 import ResponsiveAppBar from "./NavbarTwo";
 import { countries } from "./CountrySelect"; // Import the countries object from CountrySelect
-import "./mainApp.css";
+import "./MainApp.css";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
