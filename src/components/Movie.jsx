@@ -56,7 +56,7 @@ function Movie({ apiUrl, region }) {
             // Display a placeholder image if poster_path is null
             <img
               className={Styles.movieImage}
-              src="src/assets/Poster_Placeholder.png"
+              src="/Poster_Placeholder.png"
               alt={movie.title}
             />
           )}
